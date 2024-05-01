@@ -605,11 +605,6 @@ public class AzureSecurityRealm extends SecurityRealm {
         LinkedList<Option> requestOptions = new LinkedList<>();
         String encodedGroupName = groupName
                 .replace("'", "''");
-        try {
-            encodedGroupName = URLEncoder.encode(encodedGroupName, StandardCharsets.UTF_8.name());
-        } catch (UnsupportedEncodingException e) {
-            LOGGER.log(Level.WARNING, "Failed to url encode query, group name was: " + groupName);
-        }
 
         String query = String.format("displayName eq '%s'", encodedGroupName);
 
